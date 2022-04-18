@@ -27,7 +27,7 @@
 
     <!---Transaction page-->
     <div id="transaction-area">
-
+       <!--deposit-->
         <div class="row">
             <div class="col-md-4">
                 <div class="deposit status">
@@ -35,12 +35,16 @@
                     <h2>$<span id="currentdeposit">00</span></h2>
                 </div>
             </div>
+
+               <!---withdraw-->
             <div class="col-md-4">
                 <div class="withdraw status">
                     <h5 class="text-uppercase font-weight-bold ">Withdraw</h5>
-                    <h2>$00</h2>
+                    <h2>$ <span id="currentwithdraw">00</span></h2>
                 </div>
             </div>
+
+            <!---balance-->
             <div class="col-md-4 ">
                 <div class="balance status">
                     <h5 class="text-uppercase font-weight-bold ">Balance</h5>
@@ -101,6 +105,8 @@
 
             updatespantext('currentdeposit', depositNumber)
             updatespantext('curbalance', depositNumber)
+           
+            
             document.getElementById('depoamount').value = '';
         })
 
@@ -109,6 +115,11 @@
         withdrawBtn.addEventListener("click", function () {
             const withdrawNumber = getInputnumber("withdrawAamount");
             console.log(withdrawNumber)
+
+            updatespantext("currentwithdraw", withdrawNumber);
+            updatespantext('curbalance', -1* withdrawNumber);
+
+            document.getElementById("withdrawAamount").value = '';
         })
 
         function getInputnumber(id) {
